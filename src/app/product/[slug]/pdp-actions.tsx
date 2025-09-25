@@ -4,7 +4,6 @@ import { useState } from 'react';
 import QuantitySelector from '@/components/quantity-selector';
 import { AddToCartButton } from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
-import { Button } from '@/components/ui/button';
 
 interface PdpActionsProps {
   product: Product;
@@ -28,7 +27,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
           sku={product.sku}
           quantity={quantity}
           go="checkout"
-          className="w-full py-6 text-base bg-white"
+          className="w-full py-6 text-base"
           overrides={{'variant': 'outline'}}
         />
       </div>
