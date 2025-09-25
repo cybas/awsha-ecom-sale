@@ -20,9 +20,9 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-auto flex items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2" aria-label="Awshad home">
+          <Link href="/" className="mr-4 flex items-center space-x-2" aria-label="Awshad home">
             <Image
-              src="/brand/awshad-logo.png"
+              src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_Black-1.png"
               alt="Awshad logo"
               width={110}
               height={28}
@@ -69,7 +69,7 @@ const Header = () => {
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                    <Image
-                      src="/brand/awshad-logo.png"
+                      src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_Black-1.png"
                       alt="Awshad logo"
                       width={120}
                       height={32}

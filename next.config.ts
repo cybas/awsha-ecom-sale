@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
         hostname: 'awshad.com',
         port: '',
         pathname: '/**',
-      }
+      },
     ],
   },
 };

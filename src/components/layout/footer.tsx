@@ -38,7 +38,7 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
              <Link href="/" className="flex items-center space-x-2">
                 <Image
-                  src="/brand/awshad-logo.png"
+                  src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_Black-1.png"
                   alt="Awshad logo"
                   width={120}
                   height={32}

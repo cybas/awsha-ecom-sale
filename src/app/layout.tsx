@@ -11,15 +11,23 @@ export const metadata: Metadata = {
   description: 'Limited time offers on premium cannabis wellness products.',
   icons: {
     icon: [
-      { url: "/icons/favicon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" }
+      {
+        url: 'https://awshad.com/wp-content/uploads/2019/06/cropped-Awshad_LogoMark_Black-min.png',
+        type: 'image/png',
+        sizes: '32x32',
+      },
+      {
+        url: 'https://awshad.com/wp-content/uploads/2019/06/cropped-Awshad_LogoMark_Black-min.png',
+        type: 'image/png',
+        sizes: '192x192',
+      },
     ],
-    apple: [{ url: "/icons/apple-touch-icon.png" }],
-    other: [
-      { rel: "icon", url: "/icons/icon-192.png", sizes: "192x192" },
-      { rel: "icon", url: "/icons/icon-512.png", sizes: "512x512" }
-    ]
-  }
+    apple: [
+      {
+        url: 'https://awshad.com/wp-content/uploads/2019/06/cropped-Awshad_LogoMark_Black-min.png',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
