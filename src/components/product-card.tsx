@@ -45,7 +45,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
       <div className="px-4 pb-4 pt-0 grid grid-cols-2 gap-2">
          <AddToCartButton product={product} />
-         <Button variant="outline" asChild>
+         <Button style={{ backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' }} asChild>
             <Link href={`/product/${product.slug}`}>View</Link>
          </Button>
       </div>
