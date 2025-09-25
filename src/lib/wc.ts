@@ -1,34 +1,17 @@
-// TODO: fill this mapping once we export product IDs from Woo
-const skuToWpId: Record<string, number> = {
-  // "BOP4500": 12345,
-  // "BOT4500": 12346,
-  // "BON1500": 12347,
-  // "N500": 12348,
-  // "CBDGUM": 12349,
+
+export const skuToWpId: Record<string, number> = {
+  BOP4500: 21081, // Full Spectrum CBD Oil 4500mg (Peppermint)
+  BOT4500: 21071, // Full Spectrum CBD Oil 4500mg (Natural)
+  BON1500: 21068, // Full Spectrum CBD Oil 1500mg (Natural)
+  N500:    23446, // Full Spectrum CBD Oil 500mg (10ml) – Natural
+  CBDGUM:  25467  // Premium CBD+THC Calmagummies
 };
+
 
 export function getWpProductId(sku: string): number | undefined {
   return skuToWpId[sku];
 }
 
-export async function addToCartBySku(sku: string, quantity = 1) {
-  const productId = getWpProductId(sku);
-  if (!productId) {
-    // Fallback UX: open WP PDP so user can add from WP if mapping is missing
-    return { ok: false, reason: "MISSING_PRODUCT_ID" };
-  }
-  const body = new URLSearchParams({ product_id: String(productId), quantity: String(quantity) });
-  try {
-    const res = await fetch("https://awshad.com/?wc-ajax=add_to_cart", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body,
-      credentials: "include"
-    });
-    if (!res.ok) return { ok: false, reason: "NETWORK_ERROR" };
-    // Woo returns JSON; we only need to know success for UI
-    return { ok: true };
-  } catch (error) {
-    return { ok: false, reason: "NETWORK_ERROR" };
-  }
-}
+export const addToCartUrl = (id:number, go:"cart"|"checkout"="cart", qty=1) =>
+  `https://awshad.com/${go}/?add-to-cart=${id}&quantity=${qty}`;
+

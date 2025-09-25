@@ -6,7 +6,8 @@ import QuantitySelector from '@/components/quantity-selector';
 import AddToCartButton from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { AW } from '@/lib/constants';
+import { AW, SALE } from '@/lib/constants';
+import { skuToWpId, addToCartUrl } from '@/lib/wc';
 
 interface PdpActionsProps {
   product: Product;
@@ -14,6 +15,7 @@ interface PdpActionsProps {
 
 const PdpActions = ({ product }: PdpActionsProps) => {
   const [quantity, setQuantity] = useState(1);
+  const productId = skuToWpId[product.sku];
 
   return (
     <div className="space-y-4">
@@ -29,8 +31,8 @@ const PdpActions = ({ product }: PdpActionsProps) => {
       </div>
       <div>
         <Button variant="outline" className="w-full py-6 text-base bg-white" asChild>
-          <Link href={`${AW}/checkout/`} target="_blank">
-            Proceed to Checkout
+          <Link href={productId ? addToCartUrl(productId, "checkout", quantity) : `${AW}/checkout/`} target="_blank">
+            Buy Now
           </Link>
         </Button>
       </div>
