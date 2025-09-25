@@ -4,16 +4,17 @@ import { Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 import { Button } from '../ui/button';
 
 const footerLinks = {
-  shop: [
-    { href: 'https://awshad.com/shop-now', label: 'All Products' },
-    { href: 'https://awshad.com/product-category/cbd-oil/', label: 'Oils' },
-    { href: 'https://awshad.com/product-category/cbd-capsules/', label: 'Capsules' },
-    { href: 'https://awshad.com/product-category/cbd-topicals/', label: 'Topicals' },
-  ],
-  company: [
+  explore: [
+    { href: 'https://awshad.com/shop-now/', label: 'Shop' },
+    { href: 'https://awshad.com/track-my-order/', label: 'Track my Order' },
     { href: 'https://awshad.com/our-story/', label: 'Our Story' },
-    { href: 'https://awshad.com/blog/', label: 'Blog' },
-    { href: 'https://awshad.com/faqs/', label: 'FAQs' },
+    { href: 'https://awshad.com/explore-awshad/', label: 'Explore Awshad' },
+    { href: 'https://awshad.com/contact-us/', label: 'Contact Us' },
+    { href: 'https://awshad.com/privacy-policy/', label: 'Privacy Policy' },
+    { href: 'https://awshad.com/refund-policy/', label: 'Refund Policy' },
+    { href: 'https://awshad.com/terms-of-service/', label: 'Terms of Service' },
+    { href: 'https://awshad.com/shipment-policy/', label: 'Shipment Policy' },
+    { href: 'https://awshad.com/cbd-oil-mumbai/', label: 'CBD Oil Mumbai' },
   ],
   support: [
     { href: 'https://awshad.com/contact-us/', label: 'Contact Us' },
@@ -35,31 +36,33 @@ const Footer = () => {
     <footer className="border-t bg-card">
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-          <div className="col-span-2 md:col-span-4 lg:col-span-1">
+          <div className="col-span-2 lg:col-span-2">
              <Link href="/" className="flex items-center space-x-2">
                 <Image
-                  src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_Black-1.png"
+                  src="/brand/awshad-logo.png"
                   alt="Awshad logo"
                   width={120}
                   height={32}
+                  priority
                 />
             </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground max-w-sm">
               Premium cannabis wellness products for a balanced life.
             </p>
+             <div className="mt-4 flex space-x-1">
+                {socialLinks.map(social => (
+                    <Button key={social.href} variant="ghost" size="icon" asChild>
+                        <Link href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
+                            <social.icon className="h-5 w-5" />
+                        </Link>
+                    </Button>
+                ))}
+            </div>
           </div>
-          <div>
-            <h3 className="font-semibold text-foreground">Shop</h3>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.shop.map(link => (
-                <li key={link.href}><Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">{link.label}</Link></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold text-foreground">Company</h3>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.company.map(link => (
+          <div className="col-span-2 md:col-span-2 lg:col-span-2">
+            <h3 className="font-semibold text-foreground">Explore</h3>
+            <ul className="mt-4 space-y-3 grid grid-cols-1 sm:grid-cols-2">
+              {footerLinks.explore.map(link => (
                 <li key={link.href}><Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">{link.label}</Link></li>
               ))}
             </ul>
@@ -72,24 +75,14 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-           <div>
-            <h3 className="font-semibold text-foreground">Follow Us</h3>
-            <div className="mt-4 flex space-x-2">
-                {socialLinks.map(social => (
-                    <Button key={social.href} variant="ghost" size="icon" asChild>
-                        <Link href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                            <social.icon className="h-5 w-5" />
-                        </Link>
-                    </Button>
-                ))}
-            </div>
-          </div>
         </div>
-        <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-sm text-muted-foreground order-2 sm:order-1 mt-4 sm:mt-0">&copy; {new Date().getFullYear()} Awshad. All Rights Reserved.</p>
-            <div className="order-1 sm:order-2">
-                {/* Payment icons can be added here */}
-            </div>
+        <div className="mt-12 border-t pt-8 text-center text-xs text-muted-foreground space-y-4">
+             <p>
+                Licensed Under the Government of India’s AYUSH Ministry. Licence Number: MP25E/21/898
+            </p>
+            <p>
+              Casaps Trading Pvt Ltd is associated with Awshad.com. &copy; {new Date().getFullYear()} All Rights Reserved.
+            </p>
         </div>
       </div>
     </footer>
