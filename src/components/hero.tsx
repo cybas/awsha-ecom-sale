@@ -24,9 +24,6 @@ const Hero = () => {
             <Button asChild size="lg" className="rounded-full w-full sm:w-auto">
               <Link href="#sale-grid">Shop Diwali Offers</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-              <Link href="/learn/lab-reports">View Lab Reports</Link>
-            </Button>
           </div>
         </div>
         <div className="order-1 md:order-2 h-full w-full min-h-[300px] md:min-h-0">
