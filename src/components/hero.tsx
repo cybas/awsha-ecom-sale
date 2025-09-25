@@ -20,8 +20,13 @@ const Hero = () => {
           <p className="mt-4 text-lg md:text-xl text-foreground max-w-xl">
             India's most loved CBD brand for insomnia, immunity, inflammation & more!
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 w-full md:w-auto">
-            <Button asChild size="lg" className="rounded-full w-full sm:w-auto">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 w-full">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full w-full text-white"
+              style={{ backgroundColor: 'hsl(var(--aw-green))' }}
+            >
               <Link href="#sale-grid">Shop Diwali Offers</Link>
             </Button>
           </div>
