@@ -37,13 +37,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-12 border-t bg-background">
+      <section className="py-12 border-t bg-card">
         <div className="container">
            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {trustFeatures.map((feature, index) => (
               <div key={index} className="flex flex-col items-center">
-                <feature.icon className="h-8 w-8" style={{ color: 'hsl(var(--aw-green))' }} />
-                <span className="text-sm text-muted-foreground">{feature.text}</span>
+                <feature.icon className="h-12 w-12" style={{ color: 'hsl(var(--aw-green))' }} />
+                <span className="text-sm text-muted-foreground mt-2">{feature.text}</span>
               </div>
             ))}
           </div>
