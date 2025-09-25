@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
-import PromoRibbon from '@/components/promo-ribbon';
 
 export const metadata: Metadata = {
   title: 'Awshad Diwali Sale',
@@ -41,7 +40,6 @@ export default function RootLayout({
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <div className="flex min-h-screen flex-col">
-          <PromoRibbon />
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
