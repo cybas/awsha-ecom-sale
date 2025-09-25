@@ -61,7 +61,6 @@ const Header = () => {
               alt="Awshad logo"
               width={110}
               height={28}
-              className="h-7 w-auto md:h-8"
               priority
             />
           </Link>
