@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
-import { SALE } from '@/lib/constants';
+import { SALE, AW } from '@/lib/constants';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SALE),
@@ -42,6 +42,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="preconnect" href="https://awshad.com" />
+        <link rel="dns-prefetch" href="https://awshad.com" />
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <div className="flex min-h-screen flex-col">

@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
-
+import { SKUS } from '@/data/skus';
 
 export function AddToCartButton({
   sku,
@@ -22,21 +22,29 @@ export function AddToCartButton({
   className?: string;
   children?: React.ReactNode;
 }) {
-  const href = bridgeUrl(sku, quantity, go, overrides);
 
-  if (sku === "CBDGUM" && go === "cart") {
+  // For variable oils, we must force the bundle type for the bridge to work.
+  const isVariableOil = [SKUS.BOP4500, SKUS.BOT4500, SKUS.BON1500].includes(sku);
+  const finalOverrides = isVariableOil ? { bundle: "single-bottle", ...overrides } : overrides;
+
+  // Gummies are variable and require options. Link to the PDP on the main site instead.
+  if (sku === SKUS.CBDGUM) {
     return (
       <Button asChild className={cn(className)}>
-        <Link href="/product/premium-cbdthc-calmagummies">Select Options</Link>
+        <Link href="https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/">Select Options</Link>
       </Button>
     )
   }
+
+  const href = bridgeUrl(sku, quantity, go, finalOverrides);
+
+  const buttonContent = children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart');
 
   return (
     <Button asChild className={cn(className)}>
       <a href={href}>
         {go === 'cart' && <ShoppingCart className="h-5 w-5" />}
-        <span className="ml-2">{children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart')}</span>
+        <span className="ml-2">{buttonContent}</span>
       </a>
     </Button>
   );

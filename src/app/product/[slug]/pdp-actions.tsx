@@ -4,6 +4,7 @@ import { useState } from 'react';
 import QuantitySelector from '@/components/quantity-selector';
 import { AddToCartButton } from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
+import { SKUS } from '@/data/skus';
 
 interface PdpActionsProps {
   product: Product;
@@ -12,6 +13,10 @@ interface PdpActionsProps {
 const PdpActions = ({ product }: PdpActionsProps) => {
   const [quantity, setQuantity] = useState(1);
 
+  // For variable oils, we need to force the bundle type.
+  const isVariableOil = [SKUS.BOP4500, SKUS.BOT4500, SKUS.BON1500].includes(product.sku);
+  const overrides = isVariableOil ? { bundle: "single-bottle" } : undefined;
+
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-4">
@@ -19,6 +24,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
         <AddToCartButton
           sku={product.sku}
           quantity={quantity}
+          overrides={overrides}
           className="flex-grow text-base py-6"
         />
       </div>
@@ -27,8 +33,8 @@ const PdpActions = ({ product }: PdpActionsProps) => {
           sku={product.sku}
           quantity={quantity}
           go="checkout"
+          overrides={overrides}
           className="w-full py-6 text-base"
-          overrides={{'variant': 'outline'}}
         />
       </div>
     </div>

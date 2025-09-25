@@ -6,6 +6,7 @@ import { AddToCartButton } from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
+import { SKUS } from '@/data/skus';
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +14,10 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const discount = Math.round(((product.mrp - product.sale) / product.mrp) * 100);
+
+  // For variable oils, we need to force the bundle type.
+  const isVariableOil = [SKUS.BOP4500, SKUS.BOT4500, SKUS.BON1500].includes(product.sku);
+  const overrides = isVariableOil ? { bundle: "single-bottle" } : undefined;
 
   return (
     <Card className="overflow-hidden h-full flex flex-col group transition-shadow duration-300 hover:shadow-xl hover:-translate-y-0.5">
@@ -44,7 +49,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </Link>
       </div>
       <div className="px-4 pb-4 pt-0 grid grid-cols-2 gap-2">
-         <AddToCartButton sku={product.sku} />
+         <AddToCartButton sku={product.sku} overrides={overrides} />
          <Button asChild>
             <Link href={`/product/${product.slug}`}>View</Link>
          </Button>
