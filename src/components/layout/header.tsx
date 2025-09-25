@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Leaf, ShoppingCart, Menu } from 'lucide-react';
+import Image from 'next/image';
+import { ShoppingCart, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -19,9 +20,15 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-auto flex items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Leaf className="h-6 w-6" style={{ color: 'hsl(var(--aw-green))' }} />
-            <span className="font-bold text-lg" style={{ color: 'hsl(var(--aw-green))' }}>Awshad</span>
+          <Link href="/" className="mr-6 flex items-center space-x-2" aria-label="Awshad home">
+            <Image
+              src="/brand/awshad-logo.png"
+              alt="Awshad logo"
+              width={110}
+              height={28}
+              className="h-7 w-auto md:h-8"
+              priority
+            />
           </Link>
         </div>
 
@@ -61,8 +68,12 @@ const Header = () => {
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
-                  <Leaf className="h-6 w-6" style={{ color: 'hsl(var(--aw-green))' }} />
-                  <span style={{ color: 'hsl(var(--aw-green))' }}>Awshad</span>
+                   <Image
+                      src="/brand/awshad-logo.png"
+                      alt="Awshad logo"
+                      width={120}
+                      height={32}
+                    />
                 </Link>
                 {navItems.map((item) => (
                   <Link
