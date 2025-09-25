@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import Price from '@/components/price';
-import AddToCartButton from '@/components/add-to-cart-button';
+import { AddToCartButton } from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -44,7 +44,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </Link>
       </div>
       <div className="px-4 pb-4 pt-0 grid grid-cols-2 gap-2">
-         <AddToCartButton product={product} />
+         <AddToCartButton sku={product.sku} />
          <Button style={{ backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' }} asChild>
             <Link href={`/product/${product.slug}`}>View</Link>
          </Button>
