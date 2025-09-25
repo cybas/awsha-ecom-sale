@@ -15,13 +15,6 @@ interface PdpActionsProps {
 const PdpActions = ({ product }: PdpActionsProps) => {
   const [quantity, setQuantity] = useState(1);
 
-  const getBuyNowHref = () => {
-    if (product.sku === 'CBDGUM') {
-      return "https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/";
-    }
-    return buyNowUrl(product.sku, quantity);
-  }
-
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-4">
@@ -36,7 +29,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
       </div>
       <div>
         <Button variant="outline" className="w-full py-6 text-base bg-white" asChild>
-          <Link href={getBuyNowHref()} target={product.sku !== 'CBDGUM' ? "_blank" : "_self"}>
+          <Link href={buyNowUrl(product.sku, quantity)} target="_blank">
             {product.sku === 'CBDGUM' ? 'Select Options' : 'Buy Now'}
           </Link>
         </Button>

@@ -21,7 +21,7 @@ const AddToCartButton = ({
   children,
 }: AddToCartButtonProps) => {
   const { sku } = product;
-  let href = "#";
+  let href: string | null = null;
 
   if (sku === "CBDGUM") {
     return (
@@ -48,7 +48,7 @@ const AddToCartButton = ({
     }
   }
 
-  if (href === "#") {
+  if (href === "#" || !href) {
      return (
       <Button asChild className={cn('w-full', className)}>
         <Link href={product.wpUrl} target="_blank">
