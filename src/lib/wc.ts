@@ -1,33 +1,55 @@
 
-export const skuToWpId: Record<string, { id: number; attrs?: Record<string,string> }> = {
-  // Variable oils (require pa_bundle)
-  BOP4500: { id: 21081, attrs: { "attribute_pa_bundle": "single-bottle" } }, // 4500 Peppermint
-  BOT4500: { id: 21071, attrs: { "attribute_pa_bundle": "single-bottle" } }, // 4500 Natural
-  BON1500: { id: 21068, attrs: { "attribute_pa_bundle": "single-bottle" } }, // 1500 Natural
 
-  // Simple product (no attribute needed)
-  N500:    { id: 23446 },                                                     // 500mg (10ml) Natural
+export const PARENT = {
+  BOP4500: 21081, // 4500 Peppermint
+  BOT4500: 21071, // 4500 Natural
+  BON1500: 21068, // 1500 Natural
+  N500:    23446, // 500mg (10ml) – simple product
+  CBDGUM:  25467  // Gummies (variable; we'll route to PDP until set)
+};
 
-  // Gummies are variable (quantity/pack). Until we set a variation,
-  // route users to the PDP (see button logic below).
-  CBDGUM:  { id: 25467 }                                                      // Premium CBD+THC Calmagummies
+// TODO: REPLACE the XXX numbers with the *actual* variation IDs for “Single Bottle”
+export const VARIATION = {
+  BOP4500_SINGLE: 0,  // Variation ID for Peppermint 4500 • Single Bottle
+  BOT4500_SINGLE: 0,  // Variation ID for Natural 4500 • Single Bottle
+  BON1500_SINGLE: 0   // Variation ID for Natural 1500 • Single Bottle
 };
 
 
-export function getWpProductId(sku: string): number | undefined {
-  return skuToWpId[sku]?.id;
+const BASE = "https://awshad.com";
+
+export function cartUrlSimple(id:number, qty=1) {
+  return `${BASE}/cart/?add-to-cart=${id}&quantity=${qty}`;
 }
 
-export function addToCartUrl(
-  id: number,
-  attrs?: Record<string,string>,
-  go: "cart" | "checkout" = "cart",
-  qty = 1,
-  base = "https://awshad.com"
-){
-  const u = new URL(`${base}/${go}/`);
-  u.searchParams.set("add-to-cart", String(id));
-  u.searchParams.set("quantity", String(qty));
-  if (attrs) for (const [k,v] of Object.entries(attrs)) u.searchParams.set(k, v);
-  return u.toString();
+export function cartUrlBundle(parentId:number, variationId:number, qty=1, go: "cart" | "checkout" = "cart") {
+  if (!variationId) return "#"; // Don't generate a link if the variation ID is missing
+
+  const a = new URL(`${BASE}/${go}/`);
+  a.searchParams.set("add-to-cart", String(parentId));
+  a.searchParams.set("variation_id", String(variationId));
+  a.searchParams.set("attribute_pa_bundle", "single-bottle");
+  a.searchParams.set("quantity", String(qty));
+  return a.toString();
+}
+
+export function buyNowUrl(sku: string, quantity: number = 1) {
+  const parentId = PARENT[sku as keyof typeof PARENT];
+  if (!parentId) return `${BASE}/checkout/`;
+
+  if (sku === "N500") {
+    const u = new URL(`${BASE}/checkout/`);
+    u.searchParams.set("add-to-cart", String(parentId));
+    u.searchParams.set("quantity", String(quantity));
+    return u.toString();
+  }
+
+  const variationIdKey = `${sku}_SINGLE` as keyof typeof VARIATION;
+  const variationId = VARIATION[variationIdKey];
+
+  if (variationId) {
+    return cartUrlBundle(parentId, variationId, quantity, "checkout");
+  }
+
+  return `${BASE}/checkout/`;
 }

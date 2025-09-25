@@ -6,8 +6,7 @@ import QuantitySelector from '@/components/quantity-selector';
 import AddToCartButton from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { AW } from '@/lib/constants';
-import { skuToWpId, addToCartUrl } from '@/lib/wc';
+import { buyNowUrl } from '@/lib/wc';
 
 interface PdpActionsProps {
   product: Product;
@@ -15,15 +14,12 @@ interface PdpActionsProps {
 
 const PdpActions = ({ product }: PdpActionsProps) => {
   const [quantity, setQuantity] = useState(1);
-  const target = skuToWpId[product.sku];
 
-  // For gummies, the "Buy Now" button should also go to the PDP
-  const buyNowHref = () => {
-    if (!target) return `${AW}/checkout/`;
+  const getBuyNowHref = () => {
     if (product.sku === 'CBDGUM') {
       return "https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/";
     }
-    return addToCartUrl(target.id, target.attrs, "checkout", quantity);
+    return buyNowUrl(product.sku, quantity);
   }
 
   return (
@@ -40,7 +36,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
       </div>
       <div>
         <Button variant="outline" className="w-full py-6 text-base bg-white" asChild>
-          <Link href={buyNowHref()} target={product.sku !== 'CBDGUM' ? "_blank" : "_self"}>
+          <Link href={getBuyNowHref()} target={product.sku !== 'CBDGUM' ? "_blank" : "_self"}>
             {product.sku === 'CBDGUM' ? 'Select Options' : 'Buy Now'}
           </Link>
         </Button>

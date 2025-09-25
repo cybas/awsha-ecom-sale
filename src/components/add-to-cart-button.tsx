@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { skuToWpId, addToCartUrl } from '@/lib/wc';
+import { PARENT, VARIATION, cartUrlSimple, cartUrlBundle } from '@/lib/wc';
 import type { Product } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
@@ -20,21 +20,10 @@ const AddToCartButton = ({
   className,
   children,
 }: AddToCartButtonProps) => {
-  const target = skuToWpId[product.sku];
+  const { sku } = product;
+  let href = "#";
 
-  if (!target) {
-    // Fallback for safety, though all products should have a target
-    return (
-      <Button asChild className={cn('w-full', className)}>
-        <Link href={product.wpUrl} target="_blank">
-          View Product
-        </Link>
-      </Button>
-    );
-  }
-
-  // For Gummies, link to PDP to select options
-  if (product.sku === 'CBDGUM') {
+  if (sku === "CBDGUM") {
     return (
       <Button asChild className={cn('w-full', className)}>
         <Link href="https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/">
@@ -43,8 +32,31 @@ const AddToCartButton = ({
       </Button>
     );
   }
+  
+  if (sku === "N500") {
+    href = cartUrlSimple(PARENT.N500, quantity);
+  } else {
+    const parentId = PARENT[sku as keyof typeof PARENT];
+    const variationIdKey = `${sku}_SINGLE` as keyof typeof VARIATION;
+    const variationId = VARIATION[variationIdKey];
+    
+    if (parentId && variationId) {
+      href = cartUrlBundle(parentId, variationId, quantity);
+    } else {
+      // Fallback to the product page if IDs are not found
+      href = product.wpUrl;
+    }
+  }
 
-  const href = addToCartUrl(target.id, target.attrs, 'cart', quantity);
+  if (href === "#") {
+     return (
+      <Button asChild className={cn('w-full', className)}>
+        <Link href={product.wpUrl} target="_blank">
+          View Product
+        </Link>
+      </Button>
+    );
+  }
 
   return (
     <Button asChild className={cn('w-full', className)}>
