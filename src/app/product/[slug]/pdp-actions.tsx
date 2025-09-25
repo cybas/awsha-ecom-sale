@@ -6,6 +6,7 @@ import QuantitySelector from '@/components/quantity-selector';
 import AddToCartButton from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
 import { Button } from '@/components/ui/button';
+import { AW } from '@/lib/constants';
 
 interface PdpActionsProps {
   product: Product;
@@ -28,7 +29,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
       </div>
       <div>
         <Button variant="outline" className="w-full py-6 text-base bg-white" asChild>
-          <Link href="https://awshad.com/checkout/" target="_blank">
+          <Link href={`${AW}/checkout/`} target="_blank">
             Proceed to Checkout
           </Link>
         </Button>

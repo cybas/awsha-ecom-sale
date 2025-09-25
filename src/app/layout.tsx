@@ -4,8 +4,10 @@ import { cn } from '@/lib/utils';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { SALE } from '@/lib/constants';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SALE),
   title: 'Awshad Diwali Sale',
   description: 'Limited time offers on premium cannabis wellness products.',
   icons: {
@@ -20,6 +22,9 @@ export const metadata: Metadata = {
     other: [
       { rel: 'icon', url: '/icons/icon-512.png', sizes: '512x512' }
     ]
+  },
+  alternates: {
+    canonical: '/',
   },
 };
 

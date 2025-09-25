@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { Loader2, ShoppingCart, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -10,6 +9,7 @@ import { addToCartBySku } from '@/lib/wc';
 import type { Product } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
+import { AW } from '@/lib/constants';
 
 interface AddToCartButtonProps {
   product: Product;
@@ -46,7 +46,7 @@ const AddToCartButton = ({
           <div className="flex gap-2">
             <ToastAction
               altText="Checkout"
-              onClick={() => (window.location.href = 'https://awshad.com/checkout/')}
+              onClick={() => (window.location.href = `${AW}/checkout/`)}
             >
               Checkout
             </ToastAction>

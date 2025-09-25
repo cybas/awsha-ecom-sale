@@ -2,27 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 import { Button } from '../ui/button';
-
-const footerLinks = {
-  explore: [
-    { href: 'https://awshad.com/shop-now/', label: 'Shop' },
-    { href: 'https://awshad.com/track-my-order/', label: 'Track my Order' },
-    { href: 'https://awshad.com/our-story/', label: 'Our Story' },
-    { href: 'https://awshad.com/explore-awshad/', label: 'Explore Awshad' },
-    { href: 'https://awshad.com/contact-us/', label: 'Contact Us' },
-    { href: 'https://awshad.com/privacy-policy/', label: 'Privacy Policy' },
-    { href: 'https://awshad.com/refund-policy/', label: 'Refund Policy' },
-    { href: 'https://awshad.com/terms-of-service/', label: 'Terms of Service' },
-    { href: 'https://awshad.com/shipment-policy/', label: 'Shipment Policy' },
-    { href: 'https://awshad.com/cbd-oil-mumbai/', label: 'CBD Oil Mumbai' },
-  ],
-  support: [
-    { href: 'https://awshad.com/contact-us/', label: 'Contact Us' },
-    { href: 'https://awshad.com/shipping-and-return-policy/', label: 'Shipping & Returns' },
-    { href: 'https://awshad.com/privacy-policy/', label: 'Privacy Policy' },
-    { href: 'https://awshad.com/terms-and-conditions/', label: 'Terms of Service' },
-  ],
-};
+import { FOOTER_LINKS_SALE } from '@/lib/constants';
 
 const socialLinks = [
     { href: 'https://www.instagram.com/awshad/', icon: Instagram, label: 'Instagram' },
@@ -59,22 +39,15 @@ const Footer = () => {
                 ))}
             </div>
           </div>
-          <div className="col-span-2 md:col-span-2 lg:col-span-2">
+          <div className="col-span-2 md:col-span-3 lg:col-span-3">
             <h3 className="font-semibold text-foreground">Explore</h3>
             <ul className="mt-4 space-y-3 grid grid-cols-1 sm:grid-cols-2">
-              {footerLinks.explore.map(link => (
+              {FOOTER_LINKS_SALE.map(link => (
                 <li key={link.href}><Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">{link.label}</Link></li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="font-semibold text-foreground">Support</h3>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.support.map(link => (
-                <li key={link.href}><Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">{link.label}</Link></li>
-              ))}
-            </ul>
-          </div>
+
         </div>
         <div className="mt-12 border-t pt-8 text-center text-xs text-muted-foreground space-y-4">
              <p>

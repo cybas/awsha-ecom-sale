@@ -1,52 +1,13 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose
-} from '@/components/ui/sheet';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import React from 'react';
-
-const navLinks = {
-  shop: [
-    { title: "Oral Tinctures", href: "https://awshad.com/product-category/oral-tinctures/" },
-    { title: "CBD + THC Oils", href: "https://awshad.com/product-category/cbd-oil/" },
-    { title: "Capsules", href: "https://awshad.com/product-category/cbd-capsules/" },
-    { title: "Topicals", href: "https://awshad.com/product-category/cbd-topicals/" },
-    { title: "Mushroom Supplements", href: "https://awshad.com/product-category/mushroom-supplements/" },
-    { title: "Pet Products", href: "https://awshad.com/product-category/pet-products/" },
-    { title: "Strong CBD Products", href: "https://awshad.com/product-category/strong-cbd-products/" },
-    { title: "Gummies", href: "https://awshad.com/product-category/cbd-gummies/" },
-    { title: "Super Saver Combos", href: "https://awshad.com/product-category/super-saver-combos/" },
-  ],
-  doctors: [
-    { title: "Online Consultation", href: "https://awshad.com/doctors/online-consultation/" },
-    { title: "In-person Consultation", href: "https://awshad.com/doctors/in-person-consultation/" },
-  ],
-  explore: [
-    { title: "Our Story", href: "https://awshad.com/our-story/" },
-    { title: "Media Features", href: "https://awshad.com/media-features/" },
-    { title: "Blog", href: "https://awshad.com/blog/" },
-    { title: "FAQ", href: "https://awshad.com/faqs/" },
-    { title: "Lab Report", href: "/learn/lab-reports" },
-  ],
-  contact: [
-     { title: "Contact Us", href: "https://awshad.com/contact-us/" },
-     { title: "Track My Order", href: "https://awshad.com/track-my-order/" },
-  ],
-};
-
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { NAV_SALE, AW } from '@/lib/constants';
 
 const Header = () => {
   const [openSheet, setOpenSheet] = React.useState(false);
@@ -68,47 +29,37 @@ const Header = () => {
 
         <nav className="main-nav" aria-label="Primary">
           <ul className="nav-list">
-            <li className="nav-item"><Link href="/">Home</Link></li>
-
-            <li className="nav-item has-sub">
-              <button className="nav-trigger" aria-expanded="false">Shop</button>
-              <div className="nav-menu">
-                {navLinks.shop.map(link => (
-                    <Link key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.title}</Link>
-                ))}
-              </div>
-            </li>
-
-            <li className="nav-item has-sub">
-              <button className="nav-trigger" aria-expanded="false">Doctors</button>
-              <div className="nav-menu">
-                 {navLinks.doctors.map(link => (
-                    <Link key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.title}</Link>
-                ))}
-              </div>
-            </li>
-
-            <li className="nav-item has-sub">
-              <button className="nav-trigger" aria-expanded="false">Explore Awshad</button>
-              <div className="nav-menu">
-                 {navLinks.explore.map(link => (
-                    <Link key={link.href} href={link.href} target={link.href.startsWith('/') ? '_self' : '_blank'} rel="noopener noreferrer">{link.title}</Link>
-                ))}
-              </div>
-            </li>
-
-            <li className="nav-item has-sub">
-              <button className="nav-trigger" aria-expanded="false">Contact Us</button>
-              <div className="nav-menu">
-                <Link href="https://awshad.com/contact-us/" target="_blank" rel="noopener noreferrer">Contact Us</Link>
-                <Link href="https://awshad.com/track-my-order/" target="_blank" rel="noopener noreferrer">Track My Order</Link>
-              </div>
-            </li>
+            {NAV_SALE.map((item) => {
+              if (!item.children) {
+                return (
+                  <li key={item.label} className="nav-item">
+                    <Link href={item.href}>Home</Link>
+                  </li>
+                );
+              }
+              return (
+                <li key={item.label} className="nav-item has-sub">
+                  <button className="nav-trigger" aria-expanded="false">{item.label}</button>
+                  <div className="nav-menu">
+                    {item.children.map(child => (
+                      <Link 
+                        key={child.label} 
+                        href={child.href} 
+                        target={child.external ? "_blank" : "_self"} 
+                        rel={child.external ? "noopener noreferrer" : ""}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </nav>
         
         <div className="header-right">
-            <Link href="https://awshad.com/cart" aria-label="Cart" className="cart-btn" target="_blank" rel="noopener noreferrer">
+            <Link href={`${AW}/cart/`} aria-label="Cart" className="cart-btn" rel="noopener noreferrer">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="count">0</span>
             </Link>
@@ -130,49 +81,36 @@ const Header = () => {
                         />
                     </Link>
                     <Accordion type="single" collapsible className="w-full">
-                        <div className="py-2">
-                        <Link href="/" className="text-lg font-medium hover:underline" onClick={() => setOpenSheet(false)}>Home</Link>
-                        </div>
-                        <AccordionItem value="shop">
-                        <AccordionTrigger className="text-lg font-medium">Shop</AccordionTrigger>
-                        <AccordionContent>
-                            <div className="flex flex-col space-y-3 pl-4 pt-2">
-                            {navLinks.shop.map(item => (
-                                <Link key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground" onClick={() => setOpenSheet(false)}>{item.title}</Link>
-                            ))}
+                      {NAV_SALE.map(item => {
+                        if (!item.children) {
+                          return (
+                            <div key={item.label} className="py-2 border-b">
+                              <Link href={item.href} className="text-lg font-medium hover:underline" onClick={() => setOpenSheet(false)}>{item.label}</Link>
                             </div>
-                        </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="doctors">
-                        <AccordionTrigger className="text-lg font-medium">Doctors</AccordionTrigger>
-                        <AccordionContent>
-                            <div className="flex flex-col space-y-3 pl-4 pt-2">
-                            {navLinks.doctors.map(item => (
-                                <Link key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground" onClick={() => setOpenSheet(false)}>{item.title}</Link>
-                            ))}
-                            </div>
-                        </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="explore">
-                        <AccordionTrigger className="text-lg font-medium">Explore Awshad</AccordionTrigger>
-                        <AccordionContent>
-                            <div className="flex flex-col space-y-3 pl-4 pt-2">
-                            {navLinks.explore.map(item => (
-                                <Link key={item.title} href={item.href} target={item.href.startsWith('/') ? '_self' : '_blank'} rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground" onClick={() => setOpenSheet(false)}>{item.title}</Link>
-                            ))}
-                            </div>
-                        </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="contact">
-                        <AccordionTrigger className="text-lg font-medium">Contact Us</AccordionTrigger>
-                        <AccordionContent>
-                            <div className="flex flex-col space-y-3 pl-4 pt-2">
-                            {navLinks.contact.map(item => (
-                                <Link key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground" onClick={() => setOpenSheet(false)}>{item.title}</Link>
-                            ))}
-                            </div>
-                        </AccordionContent>
-                        </AccordionItem>
+                          )
+                        }
+                        return (
+                          <AccordionItem key={item.label} value={item.label.toLowerCase()}>
+                            <AccordionTrigger className="text-lg font-medium">{item.label}</AccordionTrigger>
+                            <AccordionContent>
+                                <div className="flex flex-col space-y-3 pl-4 pt-2">
+                                {item.children.map(child => (
+                                    <Link 
+                                      key={child.label} 
+                                      href={child.href}
+                                      target={child.external ? "_blank" : "_self"} 
+                                      rel={child.external ? "noopener noreferrer" : ""}
+                                      className="text-muted-foreground hover:text-foreground"
+                                      onClick={() => setOpenSheet(false)}
+                                    >
+                                      {child.label}
+                                    </Link>
+                                ))}
+                                </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        )
+                      })}
                     </Accordion>
                 </SheetContent>
             </Sheet>
