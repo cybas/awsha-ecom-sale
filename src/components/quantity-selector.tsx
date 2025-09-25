@@ -33,7 +33,7 @@ const QuantitySelector = ({ quantity, setQuantity }: QuantitySelectorProps) => {
       <Button
         variant="outline"
         size="icon"
-        className="h-10 w-10 rounded-r-none"
+        className="h-10 w-10 rounded-r-none bg-white"
         onClick={decrement}
       >
         <Minus className="h-4 w-4" />
@@ -45,13 +45,13 @@ const QuantitySelector = ({ quantity, setQuantity }: QuantitySelectorProps) => {
         value={quantity}
         onChange={handleChange}
         onBlur={handleBlur}
-        className="h-10 w-16 rounded-none border-x-0 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        className="h-10 w-16 rounded-none border-x-0 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-white"
         aria-label="Product quantity"
       />
       <Button
         variant="outline"
         size="icon"
-        className="h-10 w-10 rounded-l-none"
+        className="h-10 w-10 rounded-l-none bg-white"
         onClick={increment}
       >
         <Plus className="h-4 w-4" />

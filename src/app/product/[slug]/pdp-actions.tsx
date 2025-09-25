@@ -27,7 +27,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
         </AddToCartButton>
       </div>
       <div>
-        <Button variant="outline" className="w-full py-6 text-base" asChild>
+        <Button variant="outline" className="w-full py-6 text-base bg-white" asChild>
           <Link href="https://awshad.com/checkout/" target="_blank">
             Proceed to Checkout
           </Link>
