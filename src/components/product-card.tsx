@@ -22,7 +22,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           className="block h-full flex flex-col"
           aria-label={`View details for ${product.name}`}
         >
-          <div className="relative aspect-[4/5] overflow-hidden rounded-t-lg border-b">
+          <div className="relative aspect-[1/1] overflow-hidden rounded-t-lg border-b">
             <Image
               src={product.image}
               alt={product.image_alt || product.name}
