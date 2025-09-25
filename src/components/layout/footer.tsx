@@ -51,7 +51,8 @@ const Footer = () => {
         </div>
         <div className="mt-12 border-t pt-8 text-center text-xs text-muted-foreground space-y-4">
              <p>
-                Licensed Under the Government of India’s AYUSH Ministry. Licence Number: MP25E/21/898
+                Licensed Under The Department of Ayush, Government of India<br/>
+                License No: MP25E/21/898
             </p>
             <p>
               Casaps Trading Pvt Ltd is associated with Awshad.com. &copy; {new Date().getFullYear()} All Rights Reserved.

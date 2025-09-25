@@ -15,10 +15,10 @@ const Hero = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
             style={{ color: 'hsl(var(--aw-green))' }}
           >
-            Light up your wellness this Diwali
+            Pure. Plant-based. Powerful.
           </h1>
           <p className="mt-4 text-lg md:text-xl text-foreground max-w-xl">
-            Festive prices on select products. India-wide delivery. Secure checkout.
+            India's most loved CBD brand for insomnia, immunity, inflammation & more!
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 w-full md:w-auto">
             <Button asChild size="lg" className="rounded-full w-full sm:w-auto">
