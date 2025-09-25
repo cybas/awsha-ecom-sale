@@ -15,7 +15,16 @@ interface PdpActionsProps {
 
 const PdpActions = ({ product }: PdpActionsProps) => {
   const [quantity, setQuantity] = useState(1);
-  const productId = skuToWpId[product.sku];
+  const target = skuToWpId[product.sku];
+
+  // For gummies, the "Buy Now" button should also go to the PDP
+  const buyNowHref = () => {
+    if (!target) return `${AW}/checkout/`;
+    if (product.sku === 'CBDGUM') {
+      return "https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/";
+    }
+    return addToCartUrl(target.id, target.attrs, "checkout", quantity);
+  }
 
   return (
     <div className="space-y-4">
@@ -31,8 +40,8 @@ const PdpActions = ({ product }: PdpActionsProps) => {
       </div>
       <div>
         <Button variant="outline" className="w-full py-6 text-base bg-white" asChild>
-          <Link href={productId ? addToCartUrl(productId, "checkout", quantity) : `${AW}/checkout/`} target="_blank">
-            Buy Now
+          <Link href={buyNowHref()} target={product.sku !== 'CBDGUM' ? "_blank" : "_self"}>
+            {product.sku === 'CBDGUM' ? 'Select Options' : 'Buy Now'}
           </Link>
         </Button>
       </div>

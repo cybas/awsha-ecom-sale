@@ -20,10 +20,10 @@ const AddToCartButton = ({
   className,
   children,
 }: AddToCartButtonProps) => {
-  const productId = skuToWpId[product.sku];
+  const target = skuToWpId[product.sku];
 
-  if (!productId) {
-    // Fallback to the regular product page if the ID is missing
+  if (!target) {
+    // Fallback for safety, though all products should have a target
     return (
       <Button asChild className={cn('w-full', className)}>
         <Link href={product.wpUrl} target="_blank">
@@ -33,7 +33,18 @@ const AddToCartButton = ({
     );
   }
 
-  const href = addToCartUrl(productId, 'cart', quantity);
+  // For Gummies, link to PDP to select options
+  if (product.sku === 'CBDGUM') {
+    return (
+      <Button asChild className={cn('w-full', className)}>
+        <Link href="https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/">
+          Select Options
+        </Link>
+      </Button>
+    );
+  }
+
+  const href = addToCartUrl(target.id, target.attrs, 'cart', quantity);
 
   return (
     <Button asChild className={cn('w-full', className)}>
