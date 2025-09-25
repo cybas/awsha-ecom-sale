@@ -9,10 +9,10 @@ import {
 
 const Header = () => {
   const navItems = [
-    { href: '#', label: 'Shop' },
-    { href: '#', label: 'About' },
-    { href: '#', label: 'Learn' },
-    { href: '#', label: 'Contact' },
+    { href: 'https://awshad.com/shop-now', label: 'Shop' },
+    { href: 'https://awshad.com/our-story', label: 'About' },
+    { href: 'https://awshad.com/learn', label: 'Learn' },
+    { href: 'https://awshad.com/contact-us', label: 'Contact' },
   ];
 
   return (
@@ -30,6 +30,7 @@ const Header = () => {
             <Link
               key={item.label}
               href={item.href}
+              target="_blank" rel="noopener noreferrer"
               className="text-foreground/70 transition-colors hover:text-foreground"
             >
               {item.label}
@@ -39,8 +40,11 @@ const Header = () => {
 
         <div className="ml-auto flex items-center gap-4">
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://awshad.com/cart" target="_blank" rel="noopener noreferrer" aria-label="View Cart">
+            <a href="https://awshad.com/cart" target="_blank" rel="noopener noreferrer" aria-label="View Cart" className="relative">
               <ShoppingCart className="h-5 w-5" />
+              <span className="absolute top-0 right-0 -mt-1 -mr-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs">
+                0
+              </span>
             </a>
           </Button>
 
@@ -64,11 +68,19 @@ const Header = () => {
                   <Link
                     key={item.label}
                     href={item.href}
+                    target="_blank" rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-foreground"
                   >
                     {item.label}
                   </Link>
                 ))}
+                <Link
+                  href="https://awshad.com/checkout/"
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Checkout
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>

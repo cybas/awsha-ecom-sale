@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Loader2, ShoppingCart, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -9,6 +9,7 @@ import { ToastAction } from '@/components/ui/toast';
 import { addToCartBySku } from '@/lib/wc';
 import type { Product } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 interface AddToCartButtonProps {
   product: Product;
@@ -25,7 +26,7 @@ const AddToCartButton = ({
 }: AddToCartButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { toast } = useToast();
+  const { toast, dismiss } = useToast();
   const router = useRouter();
 
   const handleAddToCart = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -42,12 +43,15 @@ const AddToCartButton = ({
         title: 'Added to cart!',
         description: `${product.name} is now in your cart.`,
         action: (
-          <ToastAction
-            altText="Checkout"
-            onClick={() => (window.location.href = 'https://awshad.com/checkout/')}
-          >
-            Checkout
-          </ToastAction>
+          <div className="flex gap-2">
+            <ToastAction
+              altText="Checkout"
+              onClick={() => (window.location.href = 'https://awshad.com/checkout/')}
+            >
+              Checkout
+            </ToastAction>
+             <Button variant="secondary" onClick={() => dismiss()}>Continue shopping</Button>
+          </div>
         ),
       });
       setTimeout(() => setIsSuccess(false), 2000);
