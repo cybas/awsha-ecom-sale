@@ -1,4 +1,4 @@
-# E-come
+# E-com
 
 This is a NextJS starter in E-com.
 
