@@ -6,7 +6,7 @@ import QuantitySelector from '@/components/quantity-selector';
 import AddToCartButton from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { AW, SALE } from '@/lib/constants';
+import { AW } from '@/lib/constants';
 import { skuToWpId, addToCartUrl } from '@/lib/wc';
 
 interface PdpActionsProps {

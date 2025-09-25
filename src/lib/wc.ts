@@ -14,4 +14,3 @@ export function getWpProductId(sku: string): number | undefined {
 
 export const addToCartUrl = (id:number, go:"cart"|"checkout"="cart", qty=1) =>
   `https://awshad.com/${go}/?add-to-cart=${id}&quantity=${qty}`;
-
