@@ -115,26 +115,27 @@ export default function ProductPage({ params }: Props) {
             </div>
 
             <div className="mt-12">
-              <Tabs defaultValue="composition" className="w-full">
+              <Tabs defaultValue="details" className="w-full">
                 <TabsList>
-                  <TabsTrigger value="composition">Composition</TabsTrigger>
                   <TabsTrigger value="details">Details</TabsTrigger>
+                  <TabsTrigger value="composition">Composition</TabsTrigger>
                   <TabsTrigger value="reviews">Reviews</TabsTrigger>
                 </TabsList>
                 <TabsContent
-                  value="composition"
+                  value="details"
                   className="prose prose-sm max-w-none mt-4 text-muted-foreground"
+                  dangerouslySetInnerHTML={{ __html: product.details }}
                 >
-                  {formatComposition(product.composition)}
                 </TabsContent>
                 <TabsContent
-                  value="details"
+                  value="composition"
                   className="prose prose-sm max-w-none mt-4 text-muted-foreground"
                 >
                   {product.strengthMg && <p><strong>Strength:</strong> {product.strengthMg}mg</p>}
                   {product.sizeMl && <p><strong>Size:</strong> {product.sizeMl}ml</p>}
                   {product.packCount && <p><strong>Pack Size:</strong> {product.packCount} gummies</p>}
                   {product.flavor && <p><strong>Flavor:</strong> {product.flavor}</p>}
+                  {formatComposition(product.composition)}
                 </TabsContent>
                 <TabsContent value="reviews" className="mt-4">
                   <p className="text-muted-foreground">No reviews yet.</p>
