@@ -1,6 +1,6 @@
 import Hero from '@/components/hero';
 import ProductGrid from '@/components/product-grid';
-import { products } from '@/data/products';
+import { PRODUCTS } from '@/data/products';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function HomePage() {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12">
             Festive Favourites
           </h2>
-          <ProductGrid products={products} />
+          <ProductGrid products={PRODUCTS} />
         </div>
       </section>
     </>

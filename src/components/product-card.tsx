@@ -4,17 +4,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import Price from '@/components/price';
 import AddToCartButton from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const placeholderImage = PlaceHolderImages.find(
-    (img) => img.imageUrl === product.image
-  );
-
   return (
     <Card className="overflow-hidden h-full flex flex-col group transition-shadow duration-300 hover:shadow-xl">
       <div className="flex-grow">
@@ -30,7 +25,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
               width={800}
               height={1000}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint={placeholderImage?.imageHint}
             />
           </div>
           <CardContent className="p-4 flex flex-col flex-grow">

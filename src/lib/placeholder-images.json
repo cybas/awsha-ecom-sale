@@ -1,34 +1,3 @@
 {
-  "placeholderImages": [
-    {
-      "id": "product-1",
-      "description": "Awshad product 1",
-      "imageUrl": "https://images.unsplash.com/photo-1702399129748-afb48d93ed67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cHJvZHVjdCUyMGJvdHRsZXxlbnwwfHx8fDE3NTg3MTMwNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "product bottle"
-    },
-    {
-      "id": "product-2",
-      "description": "Awshad product 2",
-      "imageUrl": "https://images.unsplash.com/photo-1541544181051-e46607bc22a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwcm9kdWN0JTIwYm94fGVufDB8fHx8MTc1ODcyNTAzOHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "product box"
-    },
-    {
-      "id": "product-3",
-      "description": "Awshad product 3",
-      "imageUrl": "https://images.unsplash.com/photo-1701520839608-e4acc2602953?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGVtcCUyMG9pbHxlbnwwfHx8fDE3NTg3NzYzMTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "hemp oil"
-    },
-    {
-      "id": "product-4",
-      "description": "Awshad product 4",
-      "imageUrl": "https://images.unsplash.com/photo-1637091064410-e14a811c6536?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYW5uYWJpcyUyMGxlYWZ8ZW58MHx8fHwxNzU4NzQ0NDYxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cannabis leaf"
-    },
-    {
-      "id": "product-5",
-      "description": "Awshad product 5",
-      "imageUrl": "https://images.unsplash.com/photo-1590147358781-e73e806a7d03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvaWwlMjBkcm9wc3xlbnwwfHx8fDE3NTg3NzYzMTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "oil drops"
-    }
-  ]
+  "placeholderImages": []
 }

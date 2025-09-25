@@ -1,14 +1,16 @@
 export type Product = {
-  id: number;
-  slug: string;
+  sku: string;
   name: string;
+  slug: string;
+  wpUrl: string;
+  image: string;
   mrp: number;
   sale: number;
-  size?: string;
+  strengthMg?: number;
+  sizeMl?: number;
+  packCount?: number;
   flavor?: string;
-  image: string;
-  image_alt: string;
   shortDesc: string;
-  description: string;
-  additionalInfo: string;
+  composition?: string[];
+  image_alt: string;
 };

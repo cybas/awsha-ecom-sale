@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
-import { products } from '@/data/products';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { PRODUCTS } from '@/data/products';
 import Price from '@/components/price';
 import { Card } from '@/components/ui/card';
 import {
@@ -13,13 +13,15 @@ import {
   TabsTrigger,
 } from '@/components/ui/tabs';
 import PdpActions from './pdp-actions';
+import { ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   params: { slug: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = products.find((p) => p.slug === params.slug);
+  const product = PRODUCTS.find((p) => p.slug === params.slug);
 
   if (!product) {
     return {
@@ -46,28 +48,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  return products.map((product) => ({
+  return PRODUCTS.map((product) => ({
     slug: product.slug,
   }));
 }
 
 export default function ProductPage({ params }: Props) {
-  const product = products.find((p) => p.slug === params.slug);
+  const product = PRODUCTS.find((p) => p.slug === params.slug);
 
   if (!product) {
     notFound();
   }
 
-  const placeholderImage = PlaceHolderImages.find(
-    (img) => img.imageUrl === product.image
-  );
+  const formatComposition = (composition?: string[]) => {
+    if (!composition) return null;
+    return (
+      <ul>
+        {composition.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <div className="container py-12 md:py-20">
       <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
         <div className="md:sticky md:top-24 self-start">
           <Card className="overflow-hidden">
-            <div className="aspect-[4/5]">
+            <div className="aspect-[1/1] md:aspect-[4/5]">
               <Image
                 src={product.image}
                 alt={product.image_alt}
@@ -75,7 +84,6 @@ export default function ProductPage({ params }: Props) {
                 height={1000}
                 className="w-full h-full object-cover"
                 priority
-                data-ai-hint={placeholderImage?.imageHint}
               />
             </div>
           </Card>
@@ -86,31 +94,44 @@ export default function ProductPage({ params }: Props) {
           <div className="mt-4">
             <Price mrp={product.mrp} sale={product.sale} />
           </div>
-          <p className="mt-4 text-lg text-muted-foreground">{product.shortDesc}</p>
+          <p className="mt-4 text-lg text-muted-foreground">
+            {product.shortDesc}
+          </p>
+          <div className="mt-4">
+            <Button variant="link" asChild className="px-0">
+              <Link href={product.wpUrl} target="_blank">
+                View on awshad.com
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
 
           <div className="mt-8">
             <PdpActions product={product} />
           </div>
 
           <div className="mt-12">
-            <Tabs defaultValue="description" className="w-full">
+            <Tabs defaultValue="composition" className="w-full">
               <TabsList>
-                <TabsTrigger value="description">Description</TabsTrigger>
-                <TabsTrigger value="additionalInfo">
-                  Additional Information
-                </TabsTrigger>
+                <TabsTrigger value="composition">Composition</TabsTrigger>
+                <TabsTrigger value="details">Details</TabsTrigger>
                 <TabsTrigger value="reviews">Reviews</TabsTrigger>
               </TabsList>
               <TabsContent
-                value="description"
+                value="composition"
                 className="prose prose-sm max-w-none mt-4 text-muted-foreground"
-                dangerouslySetInnerHTML={{ __html: product.description }}
-              />
+              >
+                {formatComposition(product.composition)}
+              </TabsContent>
               <TabsContent
-                value="additionalInfo"
+                value="details"
                 className="prose prose-sm max-w-none mt-4 text-muted-foreground"
-                dangerouslySetInnerHTML={{ __html: product.additionalInfo }}
-              />
+              >
+                {product.strengthMg && <p><strong>Strength:</strong> {product.strengthMg}mg</p>}
+                {product.sizeMl && <p><strong>Size:</strong> {product.sizeMl}ml</p>}
+                {product.packCount && <p><strong>Pack Size:</strong> {product.packCount} gummies</p>}
+                {product.flavor && <p><strong>Flavor:</strong> {product.flavor}</p>}
+              </TabsContent>
               <TabsContent value="reviews" className="mt-4">
                 <p className="text-muted-foreground">No reviews yet.</p>
               </TabsContent>

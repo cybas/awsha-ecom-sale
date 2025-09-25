@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Loader2, ShoppingCart, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { ToastAction } from '@/components/ui/toast';
-import { addToCart } from '@/lib/cart';
-import { trackAddToCart } from '@/lib/analytics';
+import { addToCartBySku } from '@/lib/wc';
 import type { Product } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
@@ -27,14 +26,14 @@ const AddToCartButton = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleAddToCart = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
     setIsLoading(true);
-    // trackAddToCart(product, quantity);
-    const result = await addToCart(product.id, quantity);
+    const result = await addToCartBySku(product.sku, quantity);
     setIsLoading(false);
 
     if (result.ok) {
@@ -43,8 +42,11 @@ const AddToCartButton = ({
         title: 'Added to cart!',
         description: `${product.name} is now in your cart.`,
         action: (
-          <ToastAction altText="View Cart" asChild>
-            <Link href="https://awshad.com/cart" target="_blank" rel="noopener noreferrer">View Cart</Link>
+          <ToastAction
+            altText="Checkout"
+            onClick={() => (window.location.href = 'https://awshad.com/checkout/')}
+          >
+            Checkout
           </ToastAction>
         ),
       });
@@ -52,9 +54,10 @@ const AddToCartButton = ({
     } else {
       toast({
         variant: 'destructive',
-        title: 'Uh oh! Something went wrong.',
-        description: 'There was a problem adding the item to your cart.',
+        title: 'Uh oh!',
+        description: "Couldn't add from sale page. Opening product page...",
       });
+      router.push(product.wpUrl);
     }
   };
 

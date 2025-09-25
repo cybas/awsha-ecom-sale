@@ -1,85 +1,77 @@
 import type { Product } from '@/lib/types';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-const getImageUrl = (id: string) =>
-  PlaceHolderImages.find((img) => img.id === id)?.imageUrl || '';
-
-export const products: Product[] = [
+export const PRODUCTS: Product[] = [
   {
-    id: 1,
-    slug: 'calm-focus-oil',
-    name: 'Calm & Focus Oil',
-    mrp: 1800,
-    sale: 1499,
-    size: '30ml',
-    flavor: 'Peppermint',
-    image: getImageUrl('product-1'),
-    image_alt: 'Bottle of Awshad Calm & Focus Oil',
-    shortDesc: 'A premium blend to enhance mental clarity and tranquility throughout your day.',
-    description:
-      '<p>Our Calm & Focus oil is formulated with a precise blend of full-spectrum cannabis extract and natural terpenes to support your daily wellness routine. It helps in managing stress, improving focus, and promoting a sense of calm without drowsiness. Perfect for a busy lifestyle.</p>',
-    additionalInfo:
-      '<p><strong>Strength:</strong> 1500mg</p><p><strong>Servings:</strong> 30</p><p><strong>Ingredients:</strong> Full-Spectrum Cannabis Sativa L. Extract, MCT Oil, Natural Peppermint Flavoring.</p>',
+    sku: "BOP4500",
+    name: "Full Spectrum CBD Oil 4500mg (30ml) – Peppermint",
+    slug: "full-spectrum-cbd-oil-4500mg-peppermint",
+    wpUrl: "https://awshad.com/shop-now/cbd-oil/cbd-oil-4500mg-peppermint/",
+    image: "https://awshad.com/wp-content/uploads/2019/06/4500mg-peppermint-600x604.png",
+    image_alt: "Full Spectrum CBD Oil 4500mg (30ml) – Peppermint",
+    mrp: 5100,
+    sale: 4080,
+    strengthMg: 4500,
+    sizeMl: 30,
+    flavor: "Peppermint",
+    shortDesc: "Strong CBD+THC oil for relaxation, stress relief, pain support; lasts ~1–3 months.",
+    composition: ["15% Hemp leaf extract", "83.5% Cocos Nucifera", "1.5% Flavour"]
   },
   {
-    id: 2,
-    slug: 'sleep-well-capsules',
-    name: 'Sleep Well Capsules',
-    mrp: 2200,
-    sale: 1999,
-    size: '60 Capsules',
-    image: getImageUrl('product-2'),
-    image_alt: 'Box of Awshad Sleep Well Capsules',
-    shortDesc: 'Drift into a restorative sleep with our specially formulated vegan capsules.',
-    description:
-      '<p>Experience deep and restful sleep with our Sleep Well Capsules. Each capsule contains a synergistic blend of cannabis extract and melatonin, designed to regulate your sleep cycle and improve sleep quality. Wake up refreshed and revitalized.</p>',
-    additionalInfo:
-      '<p><strong>Strength:</strong> 900mg</p><p><strong>Servings:</strong> 60</p><p><strong>Ingredients:</strong> Full-Spectrum Cannabis Sativa L. Extract, Melatonin, Chamomile Extract, Vegan Capsule.</p>',
+    sku: "BOT4500",
+    name: "Full Spectrum CBD Oil 4500mg (30ml) – Natural",
+    slug: "full-spectrum-cbd-oil-4500mg-natural",
+    wpUrl: "https://awshad.com/shop-now/cbd-oil/cbd-oil-4500mg-natural/",
+    image: "https://awshad.com/wp-content/uploads/2019/06/4500mg-natural-600x604.png",
+    image_alt: "Full Spectrum CBD Oil 4500mg (30ml) – Natural",
+    mrp: 5100,
+    sale: 4080,
+    strengthMg: 4500,
+    sizeMl: 30,
+    flavor: "Natural",
+    shortDesc: "Strong potency CBD+THC oil for focus, anxiety, inflammation; lasts ~1–3 months.",
+    composition: ["15% Hemp leaf extract", "85% Cocos Nucifera"]
   },
   {
-    id: 3,
-    slug: 'relief-topical-balm',
-    name: 'Relief Topical Balm',
-    mrp: 1500,
-    sale: 1249,
-    size: '50g',
-    image: getImageUrl('product-3'),
-    image_alt: 'Jar of Awshad Relief Topical Balm',
-    shortDesc: 'Targeted relief for sore muscles and joints with a soothing, natural formula.',
-    description:
-      '<p>Our Relief Topical Balm provides localized relief for muscle aches, joint pain, and inflammation. The rich formula combines the power of full-spectrum cannabis extract with cooling menthol and nourishing essential oils for fast-acting comfort.</p>',
-    additionalInfo:
-      '<p><strong>Strength:</strong> 1000mg</p><p><strong>Application:</strong> Topical</p><p><strong>Ingredients:</strong> Full-Spectrum Cannabis Sativa L. Extract, Shea Butter, Coconut Oil, Menthol, Eucalyptus Oil.</p>',
+    sku: "BON1500",
+    name: "Full Spectrum CBD Oil 1500mg (30ml) – Natural",
+    slug: "full-spectrum-cbd-oil-1500mg-natural",
+    wpUrl: "https://awshad.com/shop-now/cbd-oil/cbd-oil-1500mg-natural/",
+    image: "https://awshad.com/wp-content/uploads/2019/06/1500mg-natural-600x604.png",
+    image_alt: "Full Spectrum CBD Oil 1500mg (30ml) – Natural",
+    mrp: 3200,
+    sale: 2560,
+    strengthMg: 1500,
+    sizeMl: 30,
+    flavor: "Natural",
+    shortDesc: "Beginner-friendly CBD+THC oil for daily stress, sleep and pain support; ~1–3 months.",
+    composition: ["5% Hemp leaf extract", "95% Cocos Nucifera"]
   },
   {
-    id: 4,
-    slug: 'everyday-wellness-oil',
-    name: 'Everyday Wellness Oil',
-    mrp: 1650,
-    sale: 1399,
-    size: '30ml',
-    flavor: 'Natural',
-    image: getImageUrl('product-4'),
-    image_alt: 'Bottle of Awshad Everyday Wellness Oil',
-    shortDesc: 'A versatile oil to support your overall health and maintain balance.',
-    description:
-      '<p>Incorporate our Everyday Wellness Oil into your daily routine to support overall homeostasis. This unflavored, versatile oil can be taken sublingually or added to your favorite food and beverages to promote balance from within.</p>',
-    additionalInfo:
-      '<p><strong>Strength:</strong> 1000mg</p><p><strong>Servings:</strong> 30</p><p><strong>Ingredients:</strong> Full-Spectrum Cannabis Sativa L. Extract, MCT Oil.</p>',
+    sku: "N500",
+    name: "Full Spectrum CBD Oil 500mg (10ml) – Natural",
+    slug: "full-spectrum-cbd-oil-500mg-natural",
+    wpUrl: "https://awshad.com/shop-now/cbd-oil/cbd-oil-500mg-natural/",
+    image: "https://awshad.com/wp-content/uploads/2019/06/500mg-600x600.png",
+    image_alt: "Full Spectrum CBD Oil 500mg (10ml) – Natural",
+    mrp: 1600,
+    sale: 1280,
+    strengthMg: 500,
+    sizeMl: 10,
+    flavor: "Natural",
+    shortDesc: "Pocket-size starter CBD oil for focus, anxiety, sleep; lasts ~1–3 weeks.",
+    composition: ["5% Hemp leaf extract", "95% Cocos Nucifera"]
   },
   {
-    id: 5,
-    slug: 'pet-care-oil',
-    name: 'Pet Care Oil',
-    mrp: 1300,
-    sale: 999,
-    size: '30ml',
-    image: getImageUrl('product-5'),
-    image_alt: 'Bottle of Awshad Pet Care Oil',
-    shortDesc: 'Support your furry friend’s well-being with our pet-friendly formula.',
-    description:
-      '<p>Our Pet Care Oil is specially formulated to help with anxiety, joint pain, and overall wellness for your pets. Made with high-quality, full-spectrum extract and salmon oil, it’s a safe and effective way to care for your companion.</p>',
-    additionalInfo:
-      '<p><strong>Strength:</strong> 500mg</p><p><strong>For:</strong> Dogs & Cats</p><p><strong>Ingredients:</strong> Full-Spectrum Cannabis Sativa L. Extract, Salmon Oil.</p>',
-  },
+    sku: "CBDGUM",
+    name: "Premium CBD+THC Calmagummies",
+    slug: "premium-cbdthc-calmagummies",
+    wpUrl: "https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/",
+    image: "https://awshad.com/wp-content/uploads/2022/06/design-15-1-600x600.png.webp",
+    image_alt: "Premium CBD+THC Calmagummies",
+    mrp: 5699,
+    sale: 4559,
+    packCount: 30,
+    shortDesc: "CBD+THC gummies for relaxation, focus and deep sleep; 30 gummies per jar.",
+    composition: ["Full-spectrum hemp extract (~135 mg per gummy*)", "Chamomile", "Ashwagandha", "Vijaya", "Lemon", "Mint", "Orange Rind", "Gotu Kola", "Sunthi", "Pipplimool", "Corn syrup", "Sugar", "Citric Acid"]
+  }
 ];

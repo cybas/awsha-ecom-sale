@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import QuantitySelector from '@/components/quantity-selector';
 import AddToCartButton from '@/components/add-to-cart-button';
 import type { Product } from '@/lib/types';
-import { trackViewProduct } from '@/lib/analytics';
 import { Button } from '@/components/ui/button';
 
 interface PdpActionsProps {
@@ -14,10 +13,6 @@ interface PdpActionsProps {
 
 const PdpActions = ({ product }: PdpActionsProps) => {
   const [quantity, setQuantity] = useState(1);
-
-  useEffect(() => {
-    // trackViewProduct(product);
-  }, [product]);
 
   return (
     <div className="space-y-4">
