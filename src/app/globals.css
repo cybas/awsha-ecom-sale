@@ -87,7 +87,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: hsl(var(--background));
+  background: hsl(var(--aw-green));
   border-bottom: 1px solid hsl(var(--border));
 }
 .header-inner {
@@ -141,7 +141,7 @@
   align-items: center;
   height: 40px;
   padding: 0 4px;
-  color: hsl(var(--foreground));
+  color: hsl(var(--primary-foreground));
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
@@ -153,7 +153,8 @@
 }
 .nav-item > a:hover,
 .nav-trigger:hover {
-  color: hsl(var(--aw-green));
+  color: hsl(var(--primary-foreground));
+  opacity: 0.8;
 }
 
 .has-sub {
@@ -195,7 +196,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: hsl(var(--foreground));
+  color: hsl(var(--primary-foreground));
   text-decoration: none;
 }
 
