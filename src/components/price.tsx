@@ -20,7 +20,7 @@ const Price = ({ mrp, sale, className }: PriceProps) => {
 
   return (
     <div className={cn('flex items-baseline gap-2', className)}>
-      <span className="text-xl font-bold text-primary">
+      <span className="text-xl font-bold" style={{ color: 'hsl(var(--aw-green))' }}>
         {formatCurrency(hasSale ? sale : mrp)}
       </span>
       {hasSale && (

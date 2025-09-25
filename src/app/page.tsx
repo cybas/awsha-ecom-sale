@@ -30,7 +30,7 @@ export default function HomePage() {
       <Hero />
       <section id="sale-grid" className="py-16 md:py-24">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12" style={{ color: 'hsl(var(--aw-green))' }}>
             Festive Favourites
           </h2>
           <ProductGrid products={PRODUCTS} />
@@ -42,7 +42,7 @@ export default function HomePage() {
            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {trustFeatures.map((feature, index) => (
               <div key={index} className="flex flex-col items-center">
-                <feature.icon className="h-8 w-8 text-primary mb-2" />
+                <feature.icon className="h-8 w-8" style={{ color: 'hsl(var(--aw-green))' }} />
                 <span className="text-sm text-muted-foreground">{feature.text}</span>
               </div>
             ))}

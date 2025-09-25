@@ -5,37 +5,38 @@
 @layer base {
   :root {
     /* Awshad Theme */
-    --background: 0 0% 100%; /* --aw-bg & --aw-surface: #ffffff */
-    --foreground: 15 0% 20%; /* --aw-text: #333333 */
+    --background: 0 0% 100%; /* --aw-bg: #fff */
+    --foreground: 0 0% 13%; /* --aw-text: #222 */
 
     --card: 0 0% 100%;
-    --card-foreground: 15 0% 20%;
+    --card-foreground: 0 0% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 15 0% 20%;
+    --popover-foreground: 0 0% 13%;
 
-    --primary: 155 31% 18%; /* --aw-primary: #1e3a2f */
-    --primary-foreground: 0 0% 98%;
+    --primary: 348 72% 82%; /* --aw-pink: #efb3ba */
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 48 60% 98%; /* --aw-cream: #fdfcf8 */
-    --secondary-foreground: 155 31% 18%;
+    --secondary-foreground: 60 55% 33%;
 
     --muted: 220 13% 96%;
-    --muted-foreground: 220 9% 45%; /* --aw-text-muted: #6b7280 */
+    --muted-foreground: 220 9% 45%;
 
-    --accent: 155 29% 22%; /* --aw-primary-hover: #244134 */
-    --accent-foreground: 0 0% 98%;
+    --accent: 348 65% 78%; /* a slightly deeper pink for hover */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%; /* --aw-border: #e5e7eb */
+    --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 155 31% 18%;
+    --ring: 348 72% 82%;
 
-    --radius: 8px; /* --aw-radius */
-    
-    --cream-hsl: 48 60% 98%; /* For use in components */
+    --radius: 8px;
+    --radius-xl: 22px;
+
+    --aw-green: 60 55% 33%; /* #7c7a2b */
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -45,30 +46,27 @@
   }
 
   .dark {
-    --background: 155 31% 5%;
+    --background: 0 0% 13%;
     --foreground: 0 0% 95%;
-    --card: 155 29% 10%;
+    --card: 0 0% 15%;
     --card-foreground: 0 0% 95%;
-    --popover: 155 31% 5%;
+    --popover: 0 0% 13%;
     --popover-foreground: 0 0% 95%;
-    --primary: 48 60% 98%;
-    --primary-foreground: 155 31% 18%;
-    --secondary: 155 29% 15%;
+    --primary: 348 72% 82%;
+    --primary-foreground: 0 0% 13%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 155 29% 15%;
+    --muted: 0 0% 15%;
     --muted-foreground: 215 9% 55%;
-    --accent: 48 60% 98%;
-    --accent-foreground: 155 31% 18%;
+    --accent: 348 65% 78%;
+    --accent-foreground: 0 0% 13%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 155 29% 20%;
-    --input: 155 29% 20%;
-    --ring: 48 60% 98%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 348 72% 82%;
+
+    --aw-green: 60 55% 65%;
   }
 }
 

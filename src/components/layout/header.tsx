@@ -20,8 +20,8 @@ const Header = () => {
       <div className="container flex h-16 items-center">
         <div className="mr-auto flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Leaf className="h-6 w-6 text-primary" />
-            <span className="font-bold text-lg text-primary">Awshad</span>
+            <Leaf className="h-6 w-6" style={{ color: 'hsl(var(--aw-green))' }} />
+            <span className="font-bold text-lg" style={{ color: 'hsl(var(--aw-green))' }}>Awshad</span>
           </Link>
         </div>
 
@@ -61,8 +61,8 @@ const Header = () => {
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
-                  <Leaf className="h-6 w-6 text-primary" />
-                  <span className="text-primary">Awshad</span>
+                  <Leaf className="h-6 w-6" style={{ color: 'hsl(var(--aw-green))' }} />
+                  <span style={{ color: 'hsl(var(--aw-green))' }}>Awshad</span>
                 </Link>
                 {navItems.map((item) => (
                   <Link

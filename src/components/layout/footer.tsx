@@ -36,8 +36,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
              <Link href="/" className="flex items-center space-x-2">
-                <Leaf className="h-7 w-7 text-primary" />
-                <span className="font-bold text-xl text-primary">Awshad</span>
+                <Leaf className="h-7 w-7" style={{ color: 'hsl(var(--aw-green))' }} />
+                <span className="font-bold text-xl" style={{ color: 'hsl(var(--aw-green))' }}>Awshad</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               Premium cannabis wellness products for a balanced life.
