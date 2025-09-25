@@ -76,11 +76,9 @@ const Header = () => {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
              <NavigationMenuItem>
-              <Link href="/" passHref asChild>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Home
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <Link href="/">Home</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
              <NavigationMenuItem>
               <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
