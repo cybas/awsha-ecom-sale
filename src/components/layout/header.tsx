@@ -57,7 +57,7 @@ const Header = () => {
         <div className="header-left">
            <Link href="/" aria-label="Awshad home" className="logo-link">
             <Image
-              src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_Black.png"
+              src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_OffWhite.png"
               alt="Awshad logo"
               width={110}
               height={28}
