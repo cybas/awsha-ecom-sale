@@ -81,3 +81,148 @@
     @apply font-headline;
   }
 }
+
+/* Header Alignment CSS */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: hsl(var(--background));
+  border-bottom: 1px solid hsl(var(--border));
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header-left {
+  flex-shrink: 0;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-link img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+@media (max-width: 768px) {
+  .logo-link img {
+    height: 28px;
+  }
+}
+
+.main-nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+.nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-item > a,
+.nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 4px;
+  color: hsl(var(--foreground));
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+.nav-item > a:hover,
+.nav-trigger:hover {
+  color: hsl(var(--aw-green));
+}
+
+.has-sub {
+  position: relative;
+}
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  min-width: 240px;
+  padding: 10px 8px;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 60;
+}
+.has-sub:hover .nav-menu {
+  display: block;
+}
+.nav-menu a {
+  display: block;
+  padding: 10px 12px;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.nav-menu a:hover {
+  background: hsl(var(--muted));
+  color: hsl(var(--aw-green));
+}
+
+.cart-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+}
+
+.cart-btn .count {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 9999px;
+  text-align: center;
+}
+
+.mobile-menu-trigger {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+  .main-nav {
+    display: none;
+  }
+  .mobile-menu-trigger {
+    display: inline-flex;
+  }
+}
