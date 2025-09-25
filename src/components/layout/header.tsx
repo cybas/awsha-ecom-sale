@@ -57,7 +57,7 @@ const Header = () => {
         <div className="header-left">
            <Link href="/" aria-label="Awshad home" className="logo-link">
             <Image
-              src="/brand/awshad-logo.png"
+              src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_Black.png"
               alt="Awshad logo"
               width={110}
               height={28}
@@ -123,7 +123,7 @@ const Header = () => {
                 <SheetContent side="right" className="w-full max-w-sm">
                     <Link href="/" className="flex items-center gap-2 text-lg font-semibold mb-8" onClick={() => setOpenSheet(false)}>
                         <Image
-                            src="/brand/awshad-logo.png"
+                            src="https://awshad.com/wp-content/uploads/2019/06/Awshad_LogoName_Black.png"
                             alt="Awshad logo"
                             width={120}
                             height={32}
