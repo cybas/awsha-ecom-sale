@@ -49,7 +49,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </Link>
       </div>
       <div className="px-4 pb-4 pt-0 grid grid-cols-2 gap-2">
-         <AddToCartButton sku={product.sku} overrides={overrides} />
+         <AddToCartButton sku={product.sku} overrides={overrides} className="font-bold" />
          <Button asChild style={{ backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' }} className="font-bold">
             <Link href={`/product/${product.slug}`}>View</Link>
          </Button>

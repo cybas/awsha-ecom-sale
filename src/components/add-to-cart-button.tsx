@@ -14,6 +14,7 @@ export function AddToCartButton({
   overrides, // optional: { bundle: "single-bottle" } etc.
   className,
   children,
+  style,
 }: {
   sku: string;
   quantity?: number;
@@ -21,6 +22,7 @@ export function AddToCartButton({
   overrides?: Record<string, string>;
   className?: string;
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 }) {
 
   // For variable oils, we must force the bundle type for the bridge to work.
@@ -30,7 +32,7 @@ export function AddToCartButton({
   // Gummies are variable and require options. Link to the PDP on the main site instead.
   if (sku === SKUS.CBDGUM) {
     return (
-      <Button asChild className={cn('font-bold', className)}>
+      <Button asChild className={cn('font-bold', className)} style={style}>
         <Link href="https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/">Select Options</Link>
       </Button>
     )
@@ -39,9 +41,14 @@ export function AddToCartButton({
   const href = bridgeUrl(sku, quantity, go, finalOverrides);
 
   const buttonContent = children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart');
+  
+  // Default to green for 'Add to Cart', allow override for 'Buy Now'
+  const isBuyNow = go === 'checkout';
+  const defaultGreenStyle = !isBuyNow ? { backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' } : {};
+  const finalStyle = { ...defaultGreenStyle, ...style };
 
   return (
-    <Button asChild className={cn('font-bold', className)}>
+    <Button asChild className={cn('font-bold', className)} style={finalStyle}>
       <a href={href}>
         {go === 'cart' && <ShoppingCart className="h-5 w-5" />}
         <span className="ml-2">{buttonContent}</span>

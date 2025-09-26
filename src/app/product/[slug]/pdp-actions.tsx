@@ -35,7 +35,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
           go="checkout"
           overrides={overrides}
           className="w-full py-6 text-base font-bold"
-          style={{ backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' }}
+          style={{ backgroundColor: 'hsl(var(--primary))' }}
         />
       </div>
     </div>
