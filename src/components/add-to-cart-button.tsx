@@ -24,28 +24,35 @@ export function AddToCartButton({
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }) {
-
   // For variable oils, we must force the bundle type for the bridge to work.
   const isVariableOil = [SKUS.BOP4500, SKUS.BOT4500, SKUS.BON1500].includes(sku);
-  const finalOverrides = isVariableOil ? { bundle: "single-bottle", ...overrides } : overrides;
+  const finalOverrides = isVariableOil
+    ? { bundle: 'single-bottle', ...overrides }
+    : overrides;
 
   // Gummies are variable and require options. Link to the PDP on the main site instead.
   if (sku === SKUS.CBDGUM) {
     return (
       <Button asChild className={cn('font-bold', className)} style={style}>
-        <Link href="https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/">Select Options</Link>
+        <Link href="https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/">
+          Select Options
+        </Link>
       </Button>
-    )
+    );
   }
 
   const href = bridgeUrl(sku, quantity, go, finalOverrides);
 
-  const buttonContent = children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart');
-  
-  // Default to green for 'Add to Cart', allow override for 'Buy Now'
+  const buttonContent =
+    children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart');
+
+  // Default to green for 'Add to Cart', and primary for 'Buy Now'
   const isBuyNow = go === 'checkout';
-  const defaultGreenStyle = !isBuyNow ? { backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' } : {};
-  const finalStyle = { ...defaultGreenStyle, ...style };
+  const defaultStyle = isBuyNow
+    ? { backgroundColor: 'hsl(var(--primary))', color: 'hsl(var(--primary-foreground))' }
+    : { backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' };
+  
+  const finalStyle = { ...defaultStyle, ...style };
 
   return (
     <Button asChild className={cn('font-bold', className)} style={finalStyle}>
