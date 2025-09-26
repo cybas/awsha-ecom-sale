@@ -30,7 +30,7 @@ export function AddToCartButton({
   // Gummies are variable and require options. Link to the PDP on the main site instead.
   if (sku === SKUS.CBDGUM) {
     return (
-      <Button asChild className={cn(className)}>
+      <Button asChild className={cn('font-bold', className)}>
         <Link href="https://awshad.com/shop-now/cbd-gummies/premium-cbdthc-calmagummies/">Select Options</Link>
       </Button>
     )
@@ -41,7 +41,7 @@ export function AddToCartButton({
   const buttonContent = children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart');
 
   return (
-    <Button asChild className={cn(className)}>
+    <Button asChild className={cn('font-bold', className)}>
       <a href={href}>
         {go === 'cart' && <ShoppingCart className="h-5 w-5" />}
         <span className="ml-2">{buttonContent}</span>

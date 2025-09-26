@@ -25,7 +25,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
           sku={product.sku}
           quantity={quantity}
           overrides={overrides}
-          className="flex-grow text-base py-6"
+          className="flex-grow text-base py-6 font-bold"
         />
       </div>
       <div>
@@ -34,7 +34,7 @@ const PdpActions = ({ product }: PdpActionsProps) => {
           quantity={quantity}
           go="checkout"
           overrides={overrides}
-          className="w-full py-6 text-base"
+          className="w-full py-6 text-base font-bold"
         />
       </div>
     </div>
