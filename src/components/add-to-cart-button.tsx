@@ -46,11 +46,11 @@ export function AddToCartButton({
   const buttonContent =
     children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart');
 
-  // Default to green for 'Add to Cart', and primary for 'Buy Now'
-  const isBuyNow = go === 'checkout';
-  const defaultStyle = isBuyNow
-    ? { backgroundColor: 'hsl(var(--primary))', color: 'hsl(var(--primary-foreground))' }
-    : { backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' };
+  // Default to green for both 'Add to Cart' and 'Buy Now'
+  const defaultStyle = { 
+    backgroundColor: 'hsl(var(--aw-green))', 
+    color: 'hsl(var(--primary-foreground))' 
+  };
   
   const finalStyle = { ...defaultStyle, ...style };
 
