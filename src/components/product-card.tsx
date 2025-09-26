@@ -50,7 +50,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
       <div className="px-4 pb-4 pt-0 grid grid-cols-2 gap-2">
          <AddToCartButton sku={product.sku} overrides={overrides} />
-         <Button asChild>
+         <Button asChild style={{ backgroundColor: 'hsl(var(--aw-green))', color: 'hsl(var(--primary-foreground))' }}>
             <Link href={`/product/${product.slug}`}>View</Link>
          </Button>
       </div>
