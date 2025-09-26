@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { bridgeUrl } from '@/lib/bridge';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
@@ -24,6 +25,13 @@ export function AddToCartButton({
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }) {
+  const [returnUrl, setReturnUrl] = useState('https://sale.awshad.com/');
+
+  useEffect(() => {
+    // This ensures we get the client-side URL to prevent hydration mismatches
+    setReturnUrl(window.location.href);
+  }, []);
+
   // For variable oils, we must force the bundle type for the bridge to work.
   const isVariableOil = [SKUS.BOP4500, SKUS.BOT4500, SKUS.BON1500].includes(sku);
   const finalOverrides = isVariableOil
@@ -41,18 +49,16 @@ export function AddToCartButton({
     );
   }
 
-  const href = bridgeUrl(sku, quantity, go, finalOverrides);
+  const href = bridgeUrl(sku, quantity, go, finalOverrides, returnUrl);
 
   const buttonContent =
     children || (go === 'checkout' ? 'Buy Now' : 'Add to Cart');
-
-  // Default to green for both 'Add to Cart' and 'Buy Now'
-  const defaultStyle = { 
-    backgroundColor: 'hsl(var(--aw-green))', 
-    color: 'hsl(var(--primary-foreground))' 
-  };
   
-  const finalStyle = { ...defaultStyle, ...style };
+  const finalStyle = {
+    backgroundColor: 'hsl(var(--aw-green))',
+    color: 'hsl(var(--primary-foreground))',
+    ...style,
+  };
 
   return (
     <Button asChild className={cn('font-bold', className)} style={finalStyle}>

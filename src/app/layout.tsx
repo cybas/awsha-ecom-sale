@@ -5,6 +5,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { SALE, AW } from '@/lib/constants';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SALE),
@@ -33,8 +34,16 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="preconnect" href="https://awshad.com" />
-        <link rel="dns-prefetch" href="https://awshad.com" />
+        <link rel="preconnect" href="https://awshad.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//awshad.com" />
+        <link rel="prefetch" href="https://awshad.com/checkout/" as="document" />
+        <Script id="connection-warmer" strategy="lazyOnload">
+          {`
+            window.addEventListener('load', () => {
+              fetch('https://awshad.com/', { mode: 'no-cors', keepalive: true }).catch(()=>{});
+            });
+          `}
+        </Script>
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <div className="flex min-h-screen flex-col">

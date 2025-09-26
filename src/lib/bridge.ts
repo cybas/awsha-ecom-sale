@@ -6,14 +6,17 @@ const BASE = "https://awshad.com";
 export function bridgeUrl(
   sku: string,
   qty: number = 1,
-  go: "cart" | "checkout" = "cart",
-  extras?: Record<string, string>
+  go: "cart" | "checkout" = "checkout", // default to checkout for Buy Now
+  extras?: Record<string, string>,
+  ret: string = "https://sale.awshad.com/" // fallback
 ) {
   const u = new URL(`${BASE}/`);
   u.searchParams.set("aw_cart_bridge", "1");
   u.searchParams.set("sku", sku);
   u.searchParams.set("qty", String(qty));
   u.searchParams.set("go", go);
-  if (extras) Object.entries(extras).forEach(([k,v]) => u.searchParams.set(k, v));
+  u.searchParams.set("from", "sale");
+  u.searchParams.set("return", ret);
+  if (extras) Object.entries(extras).forEach(([k, v]) => u.searchParams.set(k, v));
   return u.toString();
 }
