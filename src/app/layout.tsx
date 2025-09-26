@@ -44,6 +44,16 @@ export default function RootLayout({
             });
           `}
         </Script>
+        <Script id="checkout-prefetcher" strategy="lazyOnload">
+          {`
+            document.addEventListener('pointerover', e => {
+              const a = e.target.closest('a[href*="aw_cart_bridge=1"][href*="go=checkout"]');
+              if (!a || a.dataset.prefetched) return;
+              a.dataset.prefetched = "1";
+              fetch('https://awshad.com/', { mode:'no-cors' }).catch(()=>{});
+            }, { passive:true });
+          `}
+        </Script>
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <div className="flex min-h-screen flex-col">
